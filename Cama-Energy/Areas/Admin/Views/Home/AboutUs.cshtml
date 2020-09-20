@@ -1,0 +1,122 @@
+﻿
+
+
+
+
+@{
+    ViewData["Title"] = "درباره ما";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Admin/FormScripts/About.js"></script>
+
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6"></div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<div class="card card-primary" id="PnlList">
+    <div class="card-header">
+        <h3 class="card-title">لیست درباره ما</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col text-center">
+                <input type="button" value="افزودن درباره ما جدید" class="btn btn-primary" id="btnJadid" />
+            </div>
+        </div>
+        <hr />
+        <div class="row table table-responsive">
+            <div class="w-100 TblList">
+
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+<div class="card card-primary" id="pnlJoziyat" style="display: none;">
+    <div class="card-header">
+        <h3 class="card-title">جزئیات</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="container">
+                    <strong>پیشگفتار :</strong>
+                    <p id="lblPish"></p><br />
+                    <strong>چرا کاما :</strong>
+                    <p id="lblChera"></p><br />
+                    <strong>منشور اخلاقی :</strong><br />
+                    <p id="lblManshor"></p><br />
+                    <strong>رزومه :</strong><br />
+                    <p id="lblResume"></p><br />
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-2 align-content-center">
+            <button type="button" class="btn btn-warning mx-auto btnClose"><i class="fa fa-remove"></i>&nbsp; بازگشت</button>
+        </div>
+
+
+    </div>
+    <!-- /.card-body -->
+</div>
+
+<div class="card card-primary" id="InsertModal" style="display: none;">
+    <div class="card-header">
+        <h3 class="card-title">ثبت/ویرایش درباره</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="form-group">
+            <label for="txtPish" class="col-sm-2 control-label">پیشگفتار:</label>
+            <textarea class="form-control" cols="3" rows="7" id="txtPish" placeholder="پیشگفتار"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="txtChera" class="col-sm-2 control-label">چرا کاما:</label>
+            <textarea class="form-control" cols="3" rows="7" id="txtChera" placeholder="چرا کاما"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="txtManshor" class="col-sm-2 control-label">منشور اخلاقی:</label>
+            <textarea class="form-control" cols="3" rows="7" id="txtManshor" placeholder="منشور اخلاقی"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="txtResume" class="col-sm-2 control-label">رزومه:</label>
+            <textarea class="form-control" cols="3" rows="7" id="txtResume" placeholder="رزومه"></textarea>
+        </div>
+        <div class="form-group btn-group-toggle ">
+            <button type="button" id="btnSabt" class="btn btn-success"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+            <button type="button" class="btn btn-warning" id="btnEnseraf"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+
+
+
+
+
+
+
+

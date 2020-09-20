@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "SingleProject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .tdTextCenter {
+        text-align: center;
+        cursor: pointer;
+    }
+
+
+    .Sahandthumb {
+        width: 75px !important;
+        height: 75px !important;
+        cursor: zoom-in !important;
+        margin: 5px !important;
+        align-content:center;
+    }
+
+        .Sahandthumb:hover {
+            opacity: 0.75 !important;
+        }
+
+    .MainImage {
+        max-height: 550px;
+        max-width: 550px;
+    }
+
+    .ImageList {
+        border-style: dashed;
+        border-radius: 3px;
+        padding: 20px;
+        border-color: #80808038;
+    }
+
+</style>
+
+<section id="blog-page">
+    <div class="container">
+    <br/>
+        <div class="row">
+
+            <div id="blog-posts" class="col-md-6 col-sm-6">
+                <div class="post-item">
+
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 ImageList">
+
+                <div class="row">
+                    <img class="img-thumbnail text-center MainImage  d-block"  width="500px" height="500px" />
+                </div>
+                <br/>
+                <div class="row mt-4 align-items-center text-center ImageContainer">
+
+                </div>
+
+            </div>
+
+
+
+        </div>	    <!-- End row -->
+    </div>       <!-- End container -->
+</section>
+
+
+@section scripts {
+
+    <script src="~/js/SingleProject.js"></script>
+
+}
+

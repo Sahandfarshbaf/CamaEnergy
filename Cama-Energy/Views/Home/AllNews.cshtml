@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "اخبار";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Start Blog Banner
+==================================== -->
+<section id="blog-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+
+                <div class="blog-icon">
+                    <i class="fa fa-book fa-4x"></i>
+                </div>
+                <div class="blog-title">
+                    <h1 id="pageTitle">اخبار روز</h1>
+                </div>
+
+            </div>     <!-- End col-lg-12 -->
+        </div>	    <!-- End row -->
+    </div>       <!-- End container -->
+</section>    <!-- End Section -->
+<!-- Start Blog Post Section
+==================================== -->
+<section id="blog-page">
+    <div class="container">
+        <div class="row">
+
+            <div id="blog-posts" class="col-md-8 col-sm-8">
+                <div class="post-item">
+
+
+                </div>
+            </div>
+
+            <!-- Widget Section -->
+            <div id="right-sidebar" class="col-md-4 col-sm-4 direction">
+
+                <!-- Single Widget -->
+                <aside class="widget wow fadeInUp" data-wow-duration="1000ms">
+                    <div class="widget-title">
+                        <h3>جستجو کردن</h3>
+                    </div>
+                    <div class="widget-content" style="position:relative;">
+                       
+                            <input type="text" class="form-control" placeholder="جستجو ..." id="txtsearch">
+                            <button type="submit" title="Search" id="search-submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        
+                    </div>
+                </aside>
+                <!-- End Single Widget -->
+                <!-- Single Widget -->
+                <aside class="widget wow fadeInDown">
+                    <div class="widget-title">
+                        <h3>ویجت متن</h3>
+                    </div>
+                    <div class="widget-content">
+                        <p>لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد</p>
+                    </div>
+                </aside>
+                <!-- End Single Widget -->
+
+
+            </div>
+            <!-- End Widget Section -->
+
+        </div>	    <!-- End row -->
+    </div>       <!-- End container -->
+</section>    <!-- End Section -->
+
+@section scripts {
+    
+    <script src="~/js/AllNews.js"></script>
+}
+

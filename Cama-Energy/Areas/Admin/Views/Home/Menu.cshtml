@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "منوها";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/Admin/js/bootstrap-treeview.js"></script>
+<script src="~/Admin/FormScripts/Menu.js"></script>
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6"></div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">لیست منوها</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+       
+        <hr />
+        <div class="row">
+            <div class="col-sm-4">
+                <div id="treeview1" class=""></div>
+            </div>
+            <div class="col-sm-6">
+                <div class="selectedmenu" style="display: none;">
+                <strong>منو انتخابی :</strong>
+                <p id="lblMenuName"></p><br/>
+                <button type="button" id="btnAdd" class="btn btn-success w-25"><i class="fa fa-plus"></i>&nbsp; افزودن زیر منو</button>
+                <button type="button" id="btnEdit" class="btn btn-primary w-25"><i class="fa fa-edit"></i>&nbsp; ویرایش</button>
+                    <button type="button" id="btnRemove" class="btn btn-danger w-25"><i class="fa fa-trash"></i>&nbsp; حذف</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">افزودن منو جدید</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="txtName" class="col-sm-2 control-label">نام:</label>
+                    <input type="text" class="form-control" id="txtName" placeholder="نام" />
+                </div>
+                <div class="form-group">
+                    <label for="txtURL" class="col-sm-2 control-label">URL:</label>
+                    <input type="text" class="form-control" dir="ltr" id="txtURL" placeholder="URL" />
+                </div>
+
+            </div>
+            <div class="modal-footer btn-group">
+                <button type="button" id="btnSabt" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+                <button type="button" class="btn btn-warning w-25" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

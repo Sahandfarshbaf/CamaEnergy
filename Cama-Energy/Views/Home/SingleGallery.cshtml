@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "SingleGallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/fonts/Gallery/style.css" rel="stylesheet" />
+<link href="~/css/Gallery/magnific-popup.css" rel="stylesheet" />
+<link href="~/css/Gallery/jquery-ui.css" rel="stylesheet" />
+<link href="~/css/Gallery/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/css/Gallery/owl.theme.default.min.css" rel="stylesheet" />
+<link href="~/css/Gallery/lightgallery.min.css" rel="stylesheet" />
+<link href="~/css/Gallery/swiper.min.css" rel="stylesheet" />
+<link href="~/css/Gallery/aos.css" rel="stylesheet" />
+<link href="~/css/Gallery/style.css" rel="stylesheet" />
+<style>
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<section id="contact-us" class="direction">
+    <div class="container">
+        <div class="title text-center wow fadeIn" data-wow-duration="1500ms">
+            <h2>کاما <span class="color">انرژی</span></h2>
+            <div class="border"></div>
+        </div>
+        <div class="site-section" data-aos="fade">
+            <div class="container-fluid">
+
+                <div class="row" id="lightgallery">
+
+                    @*<div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="/Files/GalleryImages/big-images/nature_big_7.jpg" data-sub-html="<h4>Fading Light</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quia illo voluptatibus numquam inventore, ab asperiores molestiae distinctio atque nihil.</p>">
+                        <a href="#"><img src="/Files/GalleryImages/nature_small_7.jpg" alt="IMage" class="img-fluid"></a>
+                    </div>*@
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="~/js/Gallery/jquery-ui.js"></script>
+    <script src="~/js/Gallery/popper.min.js"></script>
+    <script src="~/js/Gallery/owl.carousel.min.js"></script>
+    <script src="~/js/Gallery/jquery.stellar.min.js"></script>
+    <script src="~/js/Gallery/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/Gallery/jquery.countdown.min.js"></script>
+    <script src="~/js/Gallery/aos.js"></script>
+    <script src="~/js/Gallery/main.js"></script>
+    <script src="~/js/Gallery/slick.min.js"></script>
+    <script src="~/js/Gallery/swiper.min.js"></script>
+    <script src="~/js/Gallery/mediaelement-and-player.min.js"></script>
+    <script src="~/js/Gallery/picturefill.min.js"></script>
+    <script src="~/js/Gallery/lightgallery-all.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            var Html = '';
+
+            jQuery.ajax({
+                type: "Get",
+                url: "/api/Home/GetAlbumImageById?albumId=" + parseInt(window.location.pathname.replace('/home/SingleGallery/', '')),
+                data: "",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                   
+                    jQuery.each(response, function (i, item) {
+
+                        Html += `<div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item" data-aos="fade" data-src="${item.bigImageFile}" data-sub-html="<h4>${item.title}</h4><p>${item.description}</p>">
+                                 <a href="#"><img src="${item.smallImageFile}" alt="IMage" class="img-fluid"></a>
+                    </div>`;
+
+                    });
+
+
+                    $('#lightgallery').html(Html);
+
+                },
+                error: function (response) {
+
+                    console.log(response);
+
+                },
+                complete: function () {
+
+                }
+            });
+
+            $('#lightgallery').lightGallery();
+        });
+    </script>
+}

@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "تیم کاما";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="about" class="bg-one direction">
+    <div class="container">
+        <div class="row">
+
+            <div class="title text-center wow fadeIn" data-wow-duration="1500ms">
+                <h2>تیم <span class="color">کاما</span></h2>
+                <div class="border"></div>
+            </div>
+
+            <div id="EmployeeDiv"></div>
+
+        </div>
+        <br />
+        <br />
+
+    </div>
+</section>
+
+@section scripts {
+
+    <script>
+
+
+
+        $(document).ready(() => {
+
+            var Html = '';
+
+            jQuery.ajax({
+                type: "Get",
+                url: "/api/Home/GetAllEmploye",
+                data: "",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+
+                    jQuery.each(response, function (i, item) {
+
+                        Html += `<div class="col-md-3 col-sm-6 wow fadeInDown" data-wow-duration="500ms" style="margin-bottom:5px;" >
+                                        <article class="team-mate">
+                                          <div class="member-photo">
+                                            <img id="${item.id}" class="img-responsive" src="${item.imageFile}" style="height:300px !important;max-height:300px !important border-radius:5px; padding:2px;" alt="Meghna">
+                                                <div class="mask">
+                                                    <ul class="clearfix" style="top:0px !important;padding:2px;" >
+                                                        <p>${item.description}</p>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="member-title">
+                                                <h3 id="prjTitle1">${item.name}</h3>
+                                               
+                                            </div>
+                                            <div style="text-align: center;color: red;font-weight: bold;" class="member-info">
+                                                <span id="prjSubTitle1">${item.skills}</span> 
+                                            </div>
+                                         </article>
+                                     </div>`;
+                    });
+
+
+                    $('#EmployeeDiv').html(Html);
+
+                },
+                error: function (response) {
+
+                    console.log(response);
+
+                },
+                complete: function () {
+
+                }
+            });
+
+        });
+
+
+    </script>
+}

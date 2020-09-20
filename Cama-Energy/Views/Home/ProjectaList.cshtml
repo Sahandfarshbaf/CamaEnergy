@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "لیست پروژه ها";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .thumbnail {
+        background-color: #2b2c30;
+        border-color: #666;
+    }
+
+        .thumbnail .caption {
+            padding: 9px;
+            /* color: #333; */
+            color: white
+        }
+</style>
+
+<section id="about" class="bg-one direction">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="title text-center wow fadeIn" data-wow-duration="1500ms">
+                <h2><span class="color">لیست پروژه ها </span></h2>
+                <div class="border"></div>
+            </div>
+            <div class="col-md-12 text-center wow fadeInUp" data-wow-duration="500ms">
+                <div class="wrap-about">
+
+                    <div class="row" id="ProjectList">
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <br /><br />
+
+    </div>
+</section>
+
+@section scripts {
+    
+    <script src="~/js/ProjectList.js"></script>
+}

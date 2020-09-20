@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/fonts/Gallery/style.css" rel="stylesheet" />
+<link href="~/css/Gallery/magnific-popup.css" rel="stylesheet" />
+<link href="~/css/Gallery/jquery-ui.css" rel="stylesheet" />
+<link href="~/css/Gallery/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/css/Gallery/owl.theme.default.min.css" rel="stylesheet" />
+<link href="~/css/Gallery/lightgallery.min.css" rel="stylesheet" />
+<link href="~/css/Gallery/swiper.min.css" rel="stylesheet" />
+<link href="~/css/Gallery/aos.css" rel="stylesheet" />
+<link href="~/css/Gallery/style.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="title text-center wow fadeIn" data-wow-duration="500ms">
+            <h2>گالری <span class="color">تصاویر</span></h2>
+            <div class="border"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid aos-init aos-animate" data-aos="fade" data-aos-delay="500">
+        <div class="swiper-container images-carousel swiper-container-horizontal swiper-container-free-mode">
+            <div class="swiper-wrapper" id="AlbumListDiv" style="transform: translate3d(0px, 0px, 0px);">
+
+            </div>
+
+            <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
+            <div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
+            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
+            <div class="swiper-scrollbar"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
+    </div>
+</div>
+@section scripts {
+
+
+    <script>
+        $(document).ready(() => {
+
+            var Html = '';
+
+            jQuery.ajax({
+                type: "Get",
+                url: "/api/Home/GetAlbumList",
+                data: "",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+
+                    jQuery.each(response, function (i, item) {
+
+                        Html += `<div class="swiper-slide " style="width: 319.333px; margin-right: 20px;">
+                                                    <div class="image-wrap">
+                                                        <div class="image-info">
+                                                        <h2 class="mb-3">${item.title}</h2>
+                                                        <a href="../../home/SingleGallery/${item.albumId}" class="btn btn-outline-white py-2 px-4">تصاویر بیشتر</a>
+                                                    </div>
+                                                        <img src="${item.coverImage}" alt="Image">
+                                                    </div>
+                                                </div>`;
+
+                    });
+
+
+                    $('#AlbumListDiv').html(Html);
+
+                },
+                error: function (response) {
+
+                    console.log(response);
+
+                },
+                complete: function () {
+
+                }
+            });
+
+        });
+    </script>
+    <script src="~/js/Gallery/jquery-ui.js"></script>
+    <script src="~/js/Gallery/popper.min.js"></script>
+    <script src="~/js/Gallery/owl.carousel.min.js"></script>
+    <script src="~/js/Gallery/jquery.stellar.min.js"></script>
+    <script src="~/js/Gallery/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/Gallery/jquery.countdown.min.js"></script>
+    <script src="~/js/Gallery/aos.js"></script>
+    <script src="~/js/Gallery/main.js"></script>
+    <script src="~/js/Gallery/slick.min.js"></script>
+    <script src="~/js/Gallery/swiper.min.js"></script>
+    <script src="~/js/Gallery/mediaelement-and-player.min.js"></script>
+    <script src="~/js/Gallery/picturefill.min.js"></script>
+    <script src="~/js/Gallery/lightgallery-all.min.js"></script>
+
+}
+

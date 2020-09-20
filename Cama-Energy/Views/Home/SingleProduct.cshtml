@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "SingleProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .tdTextCenter {
+        text-align: center;
+        cursor: pointer;
+    }
+
+
+    .Sahandthumb {
+        width: 75px !important;
+        height: 75px !important;
+        cursor: zoom-in !important;
+        margin: 5px !important;
+        align-content: center;
+    }
+
+        .Sahandthumb:hover {
+            opacity: 0.75 !important;
+        }
+
+    .MainImage {
+        max-height: 550px;
+        max-width: 550px;
+    }
+
+    .ImageList {
+/*        border-style: dashed;
+        border-radius: 3px;*/
+        padding: 20px;
+     /*   border-color: #80808038;*/
+    }
+    .sahandtextarea {
+        line-height: 2;
+        background-color: #212121;
+        width: 100%;
+        height: -webkit-fill-available;
+        overflow: hidden;
+        border: none;
+        resize: none;
+        border:none;
+    }
+</style>
+
+<section id="blog-page">
+    <div class="container">
+        <br />
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ImageList">
+
+                <div class="row align-items-center text-center">
+                    <img class="img-thumbnail text-center MainImage  d-block" />
+                </div>
+                <br />
+                <div class="row mt-4 align-items-center text-center ImageContainer">
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div class="row">
+
+            <div id="blog-posts" class="col-md-12 col-sm-12">
+                <div class="post-item">
+
+                </div>
+            </div>
+        </div>
+        <!-- End row -->
+    </div>       <!-- End container -->
+</section>
+
+
+@section scripts {
+
+    <script src="~/js/SingleProduct.js"></script>
+
+}
+

@@ -1,0 +1,234 @@
+﻿
+
+
+
+
+@{
+    ViewData["Title"] = "پروژه ها";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Admin/FormScripts/Project.js"></script>
+
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6"></div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<div class="card card-primary" id="PnlList">
+    <div class="card-header">
+        <h3 class="card-title">لیست پروژه ها</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col text-center">
+                <input type="button" value="افزودن پروژه جدید" class="btn btn-primary" id="btnJadid" />
+            </div>
+        </div>
+        <hr />
+        <div class="row table table-responsive">
+            <div class="w-100 TblList">
+
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+<div class="card card-primary" id="pnlJoziyat" style="display: none;">
+    <div class="card-header">
+        <h3 class="card-title">جزئیات</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="container">
+                    <strong>نوع :</strong><p id="lblCategory"></p>
+                    <strong>کارفرما :</strong><p id="lblKarfarma"></p>
+                    <strong>مدیر عامل :</strong><p id="lblModir"></p>
+                    <strong>برند :</strong><p id="lblBarnd"></p>
+                    <strong>ناظر :</strong><p id="lblNazer"></p>
+                    <strong>امکانات :</strong><p id="lblEmkanat"></p>
+                    <strong>عنوان :</strong><p id="lblOnvan"></p>
+                    <strong>از تاریخ :</strong><p id="lblAzTarikh"></p>
+                    <strong>تا تاریخ :</strong><p id="lblTaTarikh"></p>
+                    <strong>مالک :</strong><p id="lblMalek"></p>
+                    <strong>تاریخ تحویل :</strong><p id="lblTarikhTahvil"></p>
+                    <strong>توضیحات :</strong><br /><p id="lblTozihat"></p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 ImageList">
+                <div class="row align-items-center">
+                    <div class="col-lg-10 col-md-10 col-sm-10">
+                        <h4 class="mx-auto" id="imgTitle"></h4>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <i class="fa fa-remove fa-2x text-danger" id="RemoveImage" style="cursor: pointer" title="حذف تصویر"></i>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <img class="img-thumbnail MainImage mx-auto d-block" width="500px" height="500px" />
+                </div>
+
+                <div class="row mt-4 align-items-center ImageContainer">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-2 align-content-center">
+            <button type="button" class="btn btn-warning mx-auto btnClose"><i class="fa fa-remove"></i>&nbsp; بازگشت</button>
+        </div>
+
+
+    </div>
+    <!-- /.card-body -->
+</div>
+
+<div class="modal fade" style="z-index: 10000" id="InsertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document" style="max-width: 75% !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ثبت/ویرایش پروژه</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+
+                    <label for="CmbType" class="col-sm-2 control-label">دسته بندی محصولات:</label>
+                    <select class="form-control" id="CmbType">
+                        <option value="مسکونی">مسکونی</option>
+                        <option value="اداری">اداری</option>
+                        <option value="تجاری">تجاری</option>
+                        <option value="هتل">هتل</option>
+
+                    </select>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <label for="txtKarfarma" class="col-sm-3 control-label">کارفرما:</label>
+                        <input type="text" class="form-control" id="txtKarfarma" placeholder="کارفرما" />
+                    </div>
+                    <div class="col">
+                        <label for="txtModir" class="col-sm-3 control-label">مدیر عامل:</label>
+                        <input type="text" class="form-control" id="txtModir" placeholder="مدیرعامل" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="txtBrand" class="col-sm-2 control-label">برند:</label>
+                        <input type="text" class="form-control" id="txtBrand" placeholder="برند" />
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="txtNazer" class="col-sm-2 control-label">ناظر:</label>
+                            <input type="text" class="form-control" id="txtNazer" placeholder="ناظر" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtEmkanat" class="col-sm-2 control-label">امکانات:</label>
+                    <input type="text" class="form-control" id="txtEmkanat" placeholder="امکانات" />
+                </div>
+
+                <div class="form-group">
+                    <label for="txtName" class="col-sm-2 control-label">عنوان:</label>
+                    <input type="text" class="form-control" id="txtName" placeholder="عنوان" />
+                </div>
+                <div class="form-group">
+                    <label for="txtTozihat" class="col-sm-2 control-label">توضیحات:</label>
+                    <textarea class="form-control" cols="3" rows="5" id="txtTozihat" placeholder="توضیحات"></textarea>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <label for="txtAzTarikh" class="col-sm-2 control-label">از تاریخ:</label>
+                        <input type="text" class="form-control" id="txtAzTarikh" placeholder="از تاریخ" />
+                        <input id="AzTarikhObserver" type="hidden" />
+                    </div>
+                    <div class="col">
+
+                        <label for="txtTaTarikh" class="col-sm-2 control-label">تا تاریخ:</label>
+                        <input type="text" class="form-control" id="txtTaTarikh" placeholder="تا تاریخ" />
+                        <input id="TaTarikhObserver" type="hidden" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="txtMalek" class="col-sm-2 control-label">مالک :</label>
+                        <input type="text" class="form-control" id="txtMalek" placeholder="مالک" />
+                    </div>
+                    <div class="col">
+
+                        <label for="txtTarikhTahvil" class="col-sm-2 control-label">تاریخ تحویل:</label>
+                        <input type="text" class="form-control" id="txtTarikhTahvil" placeholder="تاریخ تحویل" />
+                        <input id="TarikhTahvilObserver" type="hidden" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer btn-group">
+                <button type="button" id="btnSabt" class="btn btn-success w-25"><i class="fa fa-check"></i>&nbsp; ثبت</button>
+                <button type="button" class="btn btn-warning w-25" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="ImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form enctype="multipart/form-data" method="post" action="/api/Services/UploadImage">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">افزودن تصویر جدید</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="txtOnvanTasvir" class="col-sm-3 control-label">عنوان تصویر:</label>
+                        <input type="text" class="form-control" id="txtOnvanTasvir" placeholder="عنوان تصویر" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">انتخاب تصویر</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label btn btn-info" for="exampleInputFile">انتخاب تصویر</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer btn-group">
+                    <button type="button" id="btnSabtTasvir" class="btn btn-success w-25"><i class="fa fa-upload"></i>&nbsp; بارگذاری</button>
+                    <button type="button" class="btn btn-warning w-25" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp; انصراف</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
