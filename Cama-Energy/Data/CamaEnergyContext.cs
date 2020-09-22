@@ -33,6 +33,7 @@ namespace Cama_Energy.Data
         public virtual DbSet<Services> Services { get; set; }
         public virtual DbSet<ServicesImage> ServicesImage { get; set; }
         public virtual DbSet<Videos> Videos { get; set; }
+        public virtual DbSet<Slider> Slider { get; set; }
 
 
 
@@ -40,6 +41,18 @@ namespace Cama_Energy.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+
+            modelBuilder.Entity<Slider>(entity =>
+            {
+
+                entity.Property(e => e.ImageFile).HasMaxLength(250);
+
+                entity.Property(e => e.SubTitle1).HasMaxLength(250);
+
+                entity.Property(e => e.SubTitle2).HasMaxLength(250);
+
+                entity.Property(e => e.Title).HasMaxLength(250);
+            });
 
             modelBuilder.Entity<AboutUs>(entity =>
             {

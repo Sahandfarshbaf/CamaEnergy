@@ -74,11 +74,13 @@ namespace Cama_Energy
             services.AddTransient<IVideoService, VideoService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<ISliderService, SliderService>();
             services.AddTransient<IAlbumService, AlbumService>();
+
             #endregion
 
 
-        }
+        } 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

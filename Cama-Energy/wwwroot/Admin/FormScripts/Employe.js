@@ -336,6 +336,23 @@ $(document).ready(() => {
     });
 
 
+    $(document.body).on('change', '#exampleInputFile', function () {
+
+
+        if ($(this).val() == '') {
+            $('.custom-file-label').text('انتخاب تصویر');
+        }
+        else {
+            var myfile = $("#exampleInputFile");
+
+            $('.custom-file-label').text(myfile[0].files[0].name);
+
+        }
+
+
+    });
+
+
 });
 
 
