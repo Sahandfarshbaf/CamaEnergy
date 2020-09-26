@@ -35,7 +35,7 @@ function GetAllProjects() {
 
 
             jQuery.each(response, function (i, item) {
-                debugger;
+            
                 let desc = '';
                 if (item.description.length > 200) {
 
@@ -51,7 +51,7 @@ function GetAllProjects() {
                 }
                 var azday = new persianDate(item.fromDate).format('YYYY/MM/DD')
                 var taday = new persianDate(item.toDate).format('YYYY/MM/DD')
-                console.log(azday);
+          
 
                 Html += `<tr>
                             <td>${i + 1}</td>
@@ -178,7 +178,7 @@ function UploadImage() {
 
 
     var myfile = $("#exampleInputFile");
-    console.log(myfile);
+
 
     var formData = new FormData();
 

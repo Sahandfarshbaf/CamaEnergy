@@ -33,7 +33,7 @@ function GetAllNews() {
 
 
             jQuery.each(response, function (i, item) {
-                debugger;
+             
                 let desc = '';
                 if (item.description.length > 200) {
 
@@ -160,7 +160,7 @@ function UploadImage() {
 
 
     var myfile = $("#exampleInputFile");
-    console.log(myfile);
+
 
     var formData = new FormData();
 

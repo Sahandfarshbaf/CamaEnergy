@@ -18,7 +18,7 @@ function GetProjectById() {
         dataType: "json",
         success: function (response) {
 
-            console.log(response);
+            
             if (response.productsImage.length > 0) {
 
                 $('.MainImage').attr('src', response.productsImage[0].fileImage);

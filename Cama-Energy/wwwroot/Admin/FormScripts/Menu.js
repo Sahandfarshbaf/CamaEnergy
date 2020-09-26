@@ -17,7 +17,7 @@ function GetAllMenu() {
         success: function (response) {
             var s = (((response.replace(/'/g, '"')).replace(/,]/g, ']')).replace(/,}/g, '}')).replace(/,,/g, ',');
            
-            console.log(s);
+
             $('#treeview1').treeview({
                 data: s
             });

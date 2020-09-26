@@ -40,14 +40,14 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    console.log(response);
+
 
                     jQuery.each(response, function (i, item) {
 
                         Html += `<div class="col-md-3 col-sm-6 wow fadeInDown" data-wow-duration="500ms" style="margin-bottom:5px;" >
                                         <article class="team-mate">
                                           <div class="member-photo">
-                                            <img id="${item.id}" class="img-responsive" src="${item.imageFile}" style="height:300px !important;max-height:300px !important border-radius:5px; padding:2px;" alt="Meghna">
+                                            <img id="${item.id}" class="img-responsive" src="${item.imageFile}" style="height:250px !important;max-height:300px !important; border-radius:250px;padding:10px;width:100%;" alt="Meghna">
                                                 <div class="mask">
                                                     <ul class="clearfix" style="top:0px !important;padding:2px;" >
                                                         <p>${item.description}</p>
@@ -58,7 +58,10 @@
                                                 <h3 id="prjTitle1">${item.name}</h3>
                                                
                                             </div>
-                                            <div style="text-align: center;color: red;font-weight: bold;" class="member-info">
+                                            <div style="color: red;text-align: center;font-weight: bold;" class="member-info">
+                                                <span id="prjSubTitle1">${item.degree}</span> 
+                                            </div>
+                                            <div style="text-align: center;font-weight: bold;" class="member-info">
                                                 <span id="prjSubTitle1">${item.skills}</span> 
                                             </div>
                                          </article>

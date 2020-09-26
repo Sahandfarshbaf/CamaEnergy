@@ -33,7 +33,7 @@ function GetAllServices() {
 
 
             jQuery.each(response, function (i, item) {
-                debugger;
+             
                 let desc = '';
                 if (item.description.length > 200) {
 
@@ -152,7 +152,7 @@ function UploadImage() {
 
 
     var myfile = $("#exampleInputFile");
-    console.log(myfile);
+ 
 
     var formData = new FormData();
 
@@ -364,7 +364,7 @@ function ViewDetails() {
 
 function DeleteImage(ImageId) {
 
-    debugger 
+  
     ShowLoader();
 
     jQuery.ajax({

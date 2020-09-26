@@ -37,7 +37,7 @@ namespace Cama_Energy.Core
 
         public List<Slider> GetAllSlider()
         {
-            return _context.Slider.OrderByDescending(a => a.Id).ToList();
+            return _context.Slider.ToList();
         }
 
         public void UpdateSlider(Slider slider)

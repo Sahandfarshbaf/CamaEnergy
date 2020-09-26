@@ -27,7 +27,7 @@ function GetAllAlbums() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            console.log(response);
+        
 
             jQuery.each(response, function (i, item) {
 

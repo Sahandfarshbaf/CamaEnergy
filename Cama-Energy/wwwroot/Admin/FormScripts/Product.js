@@ -31,7 +31,7 @@ function GetAllProducts() {
         dataType: "json",
         success: function (response) {
 
-            console.log(response);
+      
             jQuery.each(response, function (i, item) {
 
                 let desc = '';
@@ -193,7 +193,7 @@ function UploadImage() {
 
 
     var myfile = $("#exampleInputFile");
-    console.log(myfile);
+
 
     var formData = new FormData();
 

@@ -49,7 +49,7 @@ function GetAllProjects() {
         dataType: "json",
         success: function (response) {
 
-            console.log(response);
+     
             jQuery.each(response, function (i, item) {
 
                 let desc = '';

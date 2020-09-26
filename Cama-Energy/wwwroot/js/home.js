@@ -127,7 +127,7 @@ function GetLastProducts() {
             let counter = 1;
 
             jQuery.each(response, function (i, item) {
-                debugger;
+           
                 let desc = '';
                 if (item.description.length > 200) {
 
@@ -315,13 +315,114 @@ function GetCounter() {
 }
 
 
+function GetAllSlider() {
+
+
+    let Html = ``;
+
+
+    jQuery.ajax({
+        type: "Get",
+        url: "/api/Home/GetAllSlider",
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+         
+
+            jQuery.each(response, function (i, item) {
+
+                Html += ` <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+                <div class="sl-slide-inner">
+                    <div class="bg-img bg-img-${i + 1}" style="background-image: url(${item.imageFile})"></div>
+                    <div class="carousel-caption">
+                        <div>`
+                if (item.title !== '' && item.title !== null) {
+                    Html +=
+                        ` <h3 data-wow-duration="500ms" data-wow-delay="500ms"  style="color:red" class="heading animated fadeInRight direction">${
+                        item.title}</h3>`;
+                }
+                if (item.subTitle1 !== '' && item.subTitle1 !== null) {
+                    Html +=
+                        ` <h3 data-wow-duration="500ms" data-wow-delay="500ms" class="heading animated fadeInRight direction">${
+                        item.subTitle1}</h3>`;
+                }
+                if (item.subTitle2 !== '' && item.subTitle2 !== null) {
+                    Html +=
+                        ` <h3 data-wow-duration="500ms" data-wow-delay="500ms" class="heading animated fadeInRight direction">${
+                        item.subTitle2}</h3>`;
+                }
+
+                Html +=    ` </div>
+                    </div>
+                </div>
+            </div>`;
+            });
+
+
+
+            $('.sl-slider').html(Html);
+
+        },
+        error: function (response) {
+
+            console.log(response);
+
+        },
+        complete: function () {
+            $(function () {
+                var n = function () {
+                    var i = $("#nav-arrows")
+                        , n = $("#nav-dots > span")
+                        , t = $("#slitSlider").slitslider({
+                              speed: 1600,
+                              onBeforeChange: function (t, i) {
+                                  n.removeClass("nav-dot-current");
+                                  n.eq(i).addClass("nav-dot-current")
+                              }
+                          })
+                        , r = function () {
+                            u()
+                        }
+                        , u = function () {
+                            i.children(":last").on("click", function () {
+                                return t.next(),
+                                    !1
+                            });
+                            i.children(":first").on("click", function () {
+                                return t.previous(),
+                                    !1
+                            });
+                            n.each(function (i) {
+                                $(this).on("click", function () {
+                                    var r = $(this);
+                                    return t.isActive() || (n.removeClass("nav-dot-current"),
+                                            r.addClass("nav-dot-current")),
+                                        t.jump(i + 1),
+                                        !1
+                                })
+                            })
+                        };
+                    return {
+                        init: r
+                    }
+                }();
+                n.init()
+            });
+
+        }
+    });
+}
+
+
 
 $(document).ready(() => {
 
 
 
 
-
+    GetAllSlider();
     GetCounter();
     GetAllServices();
     GetLastNews();

@@ -31,7 +31,7 @@ function GetAllVideo() {
 
 
             jQuery.each(response, function (i, item) {
-                debugger;
+           
                 let desc = '';
                 if (item.description.length > 200) {
 

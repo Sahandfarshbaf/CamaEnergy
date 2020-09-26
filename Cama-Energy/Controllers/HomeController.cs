@@ -28,9 +28,12 @@ namespace Cama_Energy.Controllers
         private readonly IVideoService _video;
         private readonly IDownloadService _download;
         private readonly IAlbumService _album;
+        private readonly ISliderService _slider;
 
 
-        public HomeController(IAlbumService album,ILogger<HomeController> logger, IServicesService services, IProjectsService projects, IProductsService products, ICertificateService certificate, INewsService news, IEmployeService employe, IVideoService video, IDownloadService download)
+        public HomeController(IAlbumService album, ILogger<HomeController> logger, IServicesService services, IProjectsService projects, 
+                              IProductsService products, ICertificateService certificate, INewsService news, IEmployeService employe, 
+                              IVideoService video, IDownloadService download,ISliderService slider)
         {
             _logger = logger;
             _services = services;
@@ -42,6 +45,7 @@ namespace Cama_Energy.Controllers
             _video = video;
             _download = download;
             _album = album;
+            _slider = slider;
         }
 
         public IActionResult Index()
@@ -201,7 +205,8 @@ namespace Cama_Energy.Controllers
 
         #endregion
 
-        public IActionResult Gallery() {
+        public IActionResult Gallery()
+        {
 
             return View();
         }
@@ -422,7 +427,7 @@ namespace Cama_Energy.Controllers
         public IActionResult GetAlbumList()
         {
 
-            return Ok(_album.GetAllAlbum().Where(a=>a.IsActive==true).ToList());
+            return Ok(_album.GetAllAlbum().Where(a => a.IsActive == true).ToList());
 
         }
 
@@ -440,6 +445,15 @@ namespace Cama_Energy.Controllers
         public IActionResult GetAllEmploye()
         {
             return Ok(_employe.GetAllEmploye());
+
+        }
+
+        [HttpGet]
+        [Route("api/Home/GetAllSlider")]
+        public IActionResult GetAllSlider()
+        {
+
+            return Ok(_slider.GetAllSlider());
 
         }
     }
