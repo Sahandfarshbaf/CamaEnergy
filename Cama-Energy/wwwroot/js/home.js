@@ -248,7 +248,15 @@ function GetLastProjects() {
                     desc = item.description;
                 }
 
-                $(`#prjImage${counter}`).attr('src', item.projectsImage[0].fileImage);
+                if (item.projectsImage.length==0) {
+
+                    $(`#prjImage${counter}`).attr('src', `/img/VideoPreview.png`);
+                    
+                }
+                else {
+                    $(`#prjImage${counter}`).attr('src', item.projectsImage[0].fileImage);
+
+                }
                 $(`#prjTitle${counter}`).html(item.title);
                 $(`#prjSubTitle${counter}`).html(item.brand);
                 $(`#prjDesc${counter}`).html(desc);

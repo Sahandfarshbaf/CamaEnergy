@@ -68,8 +68,8 @@ function GetAllProducts() {
 
                 Html += `<div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <img src="${item.productsImage[0].fileImage}" alt="...">
-                                <div class="caption">
+                                <img src="${item.productsImage[0].fileImage}" style="width:100%; max-height:350px;min-height:350px;" alt="...">
+                                <div class="caption" style="min-height:200px;">
                                     <span class="ph1">${item.name}</span>
                                     <p>${desc}</p>
                                     <p><a href="../home/SingleProduct?id=${item.id}" class="btn btn-danger" onclick="../home/SingleProduct?id=${item.id}" role="button">مشاهده جزئیات</a>

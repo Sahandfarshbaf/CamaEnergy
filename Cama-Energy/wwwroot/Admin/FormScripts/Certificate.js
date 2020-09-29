@@ -9,6 +9,7 @@ function GetAllCertificate() {
                <thead>
                   <tr>
                     <th>ردیف</th>
+<th>نوع</th>
                     <th>عنوان</th>
                     <th>توضیحات</th>
                     <th>تصویر</th>
@@ -31,26 +32,40 @@ function GetAllCertificate() {
 
 
             jQuery.each(response, function (i, item) {
-         
+
+                let type = '';
+                switch (item.type) {
+
+                    case 1:
+                        type = "گواهینامه";
+                        break;
+                    case 2:
+                        type = "تقدیرنامه";
+                        break;
+                    case 3:
+                        type = "افتخارات";
+                        break;
+                }
                 let desc = '';
                 if (item.description != null) {
-                if (item.description.length > 200) {
+                    if (item.description.length > 200) {
 
-                    for (var j = 200; j < item.description.length; j++) {
+                        for (var j = 200; j < item.description.length; j++) {
 
-                        if (item.description.charAt(j) === " ") {
-                            desc = item.description.substr(0, j) + " ...";
-                            j = item.description.length;
+                            if (item.description.charAt(j) === " ") {
+                                desc = item.description.substr(0, j) + " ...";
+                                j = item.description.length;
+                            }
                         }
-                    }
-                } else {
-                    desc = item.description;
+                    } else {
+                        desc = item.description;
                     }
                 }
 
 
                 Html += `<tr>
                             <td>${i + 1}</td>
+                            <td>${type}</td>
                             <td>${item.title}</td>
                             <td>${desc}</td>
                             <td style="min-width: 100px;"><img src = "${item.fileImage}" alt = "${item.title} " id = "${item.id}" class="img-thumbnail Sahandthumb mx-auto" /></td>
@@ -112,7 +127,7 @@ function AddCertificate() {
 
     jQuery.ajax({
         type: "Post",
-        url: "/api/Certificate/AddCertificate?title=" + $('#txtTitle').val() + "&desc=" + $('#txtTozihat').val(),
+        url: `/api/Certificate/AddCertificate?type=${$("#CmbType").val()}&title=${$('#txtTitle').val()}&desc=${$('#txtTozihat').val()}`,
         data: formData,
         contentType: false,
         processData: false,
@@ -129,6 +144,7 @@ function AddCertificate() {
 
             $('#txtTitle').val('');
             $('#txtTozihat').val('');
+            $("#CmbType").val(1);
             $('#InsertModal').modal('hide');
 
 
@@ -190,7 +206,7 @@ function GetCertificateById() {
         dataType: "json",
         success: function (response) {
 
-
+            $("#CmbType").val(response.type)
             $('#txtTitle').val(response.title);
             $('#txtTozihat').val(response.description);
             $('#InsertModal').modal();
@@ -217,7 +233,7 @@ function UpdateCertificate() {
 
     jQuery.ajax({
         type: "Post",
-        url: "/api/Certificate/UpdateCertificate?id=" + Id + "&title=" + $('#txtTitle').val() + "&desc=" + $('#txtTozihat').val(),
+        url: "/api/Certificate/UpdateCertificate?id=" + Id + "&type=" + $("#CmbType").val() + "&title=" + $('#txtTitle').val() + "&desc=" + $('#txtTozihat').val(),
         data: formData,
         contentType: false,
         processData: false,
@@ -231,6 +247,7 @@ function UpdateCertificate() {
             GetAllCertificate();
 
             Id = 0;
+            $("#CmbType").val(1)
             $('#txtTitle').val('');
             $('#txtTozihat').val('');
             $('#exampleInputFile').val('');
@@ -305,6 +322,7 @@ $(document).ready(() => {
         $('#txtTitle').val('');
         $('#txtTozihat').val('');
         $('#exampleInputFile').val('');
+        $("CmbType").val(1);
         $('.custom-file-label').text('انتخاب تصویر');
         $('#InsertModal').modal();
     });

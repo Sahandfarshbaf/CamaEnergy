@@ -68,9 +68,15 @@ function GetAllProjects() {
 
 
                 Html += `<div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                <img src="${item.projectsImage[0].fileImage}"  width="250px" height="300px">
-                                <div class="caption">
+                            <div class="thumbnail">`;
+                if (item.projectsImage.length == 0) {
+                    Html += `  <img src="" style="width:100%;" height="300px">`
+                }
+                else {
+                    Html += ` <img src="${item.projectsImage[0].fileImage}"  style="width:100%; max-height:350px;min-height:350px;" >`;
+                }
+                
+                Html += `   <div class="caption"  style="height:150px;">
                                     <span class="ph1">${item.title}</span>
                                     <p>${desc}</p>
                                     <p><a href="../home/SingleProject?id=${item.id}" class="btn btn-danger" onclick="../home/SingleProject?id=${item.id}" role="button">مشاهده جزئیات</a>

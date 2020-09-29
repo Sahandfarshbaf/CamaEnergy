@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 ImageList">
-                
+
                 <div class="row">
                     <img class="img-thumbnail MainImage mx-auto d-block" width="500px" height="500px" />
                 </div>
@@ -88,6 +88,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="txtTitle" class="col-sm-2 control-label">نوع خبر:</label>
+                        <select class="form-control" id="CmbType">
+                            <option value="1">گواهینامه</option>
+                            <option value="2">تقدیرنامه</option>
+                            <option value="3">افتخارات</option>
+
+                        </select>
+
+                    </div>
+                    <div class="form-group">
                         <label for="txtTitle" class="col-sm-2 control-label">عنوان:</label>
                         <input type="text" class="form-control" id="txtTitle" placeholder="عنوان" />
                     </div>
@@ -100,7 +110,7 @@
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label btn btn-info"  for="exampleInputFile">انتخاب تصویر</label>
+                                <label class="custom-file-label btn btn-info" for="exampleInputFile">انتخاب تصویر</label>
                             </div>
 
                         </div>
