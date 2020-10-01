@@ -41,6 +41,7 @@ namespace Cama_Energy.Areas.Admin.Controllers
         {
             try
             {
+                var aa = DateTime.Now.Ticks;
                 var a = _projects.AddProjects(project);
                 return Ok(a);
             }

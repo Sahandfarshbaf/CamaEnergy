@@ -127,7 +127,7 @@ function InsertProjects() {
 
     }
 
-
+    debugger;
     ShowLoader();
 
     jQuery.ajax({
@@ -310,7 +310,7 @@ function UpdateProjects() {
 
     let project = {
         Id: ProjectId,
-        ProjectCategory: $('CmbType').val(),
+        projectCategory: $('#CmbType').val(),
         Karfarma: $('#txtKarfarma').val(),
         ModirAmel: $('#txtModir').val(),
         Brand: $('#txtBrand').val(),
@@ -659,7 +659,8 @@ $(document).ready(() => {
         observer: true,
         format: 'YYYY/MM/DD',
         altField: '#AzTarikhObserver',
-        autoClose: true
+        autoClose: true,
+        initialValue: true
 
     });
 
@@ -667,7 +668,8 @@ $(document).ready(() => {
         observer: true,
         format: 'YYYY/MM/DD',
         altField: '#TaTarikhObserver',
-        autoClose: true
+        autoClose: true,
+         initialValue: true
 
     });
 
@@ -675,7 +677,8 @@ $(document).ready(() => {
         observer: true,
         format: 'YYYY/MM/DD',
         altField: '#TarikhTahvilObserver',
-        autoClose: true
+        autoClose: true,
+         initialValue: true
 
     });
 

@@ -9,7 +9,14 @@ namespace Cama_Energy.Tools
     class DateTimeFunc
     {
 
-
+        public static long UnixTimeStampToTimeTick(long unixTimeStamp)
+        {
+            
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            var tick = dtDateTime.Ticks;
+            return tick;
+        }
         public static string MiladiToShamsi(DateTime miladiTarikh)
         {
             PersianCalendar pc = new System.Globalization.PersianCalendar();
