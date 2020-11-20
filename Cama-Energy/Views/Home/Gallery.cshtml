@@ -26,7 +26,7 @@
             <div class="swiper-wrapper" id="AlbumListDiv" style="transform: translate3d(0px, 0px, 0px);">
 
             </div>
-
+            <br/><br/>
             <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
             <div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
             <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-disabled="false"></div>
@@ -34,6 +34,7 @@
             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
         </div>
     </div>
+    <br/><br/>
 </div>
 @section scripts {
 
@@ -51,19 +52,19 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                 
+
 
                     jQuery.each(response, function (i, item) {
 
-                        Html += `<div class="swiper-slide " style="width: 319.333px; margin-right: 20px;">
-                                                    <div class="image-wrap">
-                                                        <div class="image-info">
-                                                        <h2 class="mb-3">${item.title}</h2>
-                                                        <a href="../../home/SingleGallery/${item.albumId}" class="btn btn-outline-white py-2 px-4">تصاویر بیشتر</a>
-                                                    </div>
-                                                        <img src="${item.coverImage}" alt="Image">
-                                                    </div>
-                                                </div>`;
+                        Html += `<div class="swiper-slide" style="width: 319.333px; margin-right: 20px;">                                                       
+                                    <div class="image-wrap">
+                                    <h4 class="mb-3 text-center" style="color: #fff;">${item.title}</h4>   
+                                                            <div class="image-info">
+                                                            <a href="../../home/SingleGallery/${item.albumId}" class="btn btn-outline-white py-2 px-4">تصاویر بیشتر</a>
+                                                        </div>
+                                                            <img src="${item.coverImage}" alt="Image">
+                                                        </div>                                                        
+                                                    </div>`;
 
                     });
 

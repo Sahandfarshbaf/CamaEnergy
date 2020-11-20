@@ -29,11 +29,10 @@ namespace Cama_Energy.Controllers
         private readonly IDownloadService _download;
         private readonly IAlbumService _album;
         private readonly ISliderService _slider;
+        private readonly IContactService _contact;
 
 
-        public HomeController(IAlbumService album, ILogger<HomeController> logger, IServicesService services, IProjectsService projects, 
-                              IProductsService products, ICertificateService certificate, INewsService news, IEmployeService employe, 
-                              IVideoService video, IDownloadService download,ISliderService slider)
+        public HomeController(ILogger<HomeController> logger, IServicesService services, IProjectsService projects, IProductsService products, ICertificateService certificate, INewsService news, IEmployeService employe, IVideoService video, IDownloadService download, IAlbumService album, ISliderService slider, IContactService contact)
         {
             _logger = logger;
             _services = services;
@@ -46,8 +45,8 @@ namespace Cama_Energy.Controllers
             _download = download;
             _album = album;
             _slider = slider;
+            _contact = contact;
         }
-
         public IActionResult Index()
         {
             return View();
@@ -454,6 +453,14 @@ namespace Cama_Energy.Controllers
         {
 
             return Ok(_slider.GetAllSlider());
+
+        }
+
+        [HttpGet]
+        [Route("api/Home/GetContact")]
+        public IActionResult GetAboutById()
+        {
+            return Ok(_contact.GetContact());
 
         }
     }

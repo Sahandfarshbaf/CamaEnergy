@@ -73,5 +73,9 @@ namespace Cama_Energy.Areas.Admin.Controllers
         {
             return View();
         }
+        public IActionResult Contact()
+        {
+            return View();
+        }
     }
 }

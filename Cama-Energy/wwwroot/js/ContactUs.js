@@ -1,4 +1,39 @@
 ﻿
+function GetContact() {
+
+    
+
+    jQuery.ajax({
+        type: "Get",
+        url: `/api/Home/GetContact`,
+        data: "",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+
+
+
+            $('#txtPhone1').html(response.phone1);
+            $('#txtPhone2').html(response.phone2);
+            $('#txtWhats').html(response.whatsApp);
+            $('#txtTele').html(response.telegram);
+            $('#txtEmail').html(response.email);
+            $('#txtAddress').html(response.address);
+
+
+        },
+        error: function (response) {
+
+            console.log(response);
+
+        },
+        complete: function () {
+      
+
+        }
+    });
+}
 
 function SendEmail() {
 
@@ -46,6 +81,7 @@ function SendEmail() {
 
 $(document).ready(() => {
 
+    GetContact();
     $('#contact-submit').click(function (e) {
 
         //stop the form from being submitted

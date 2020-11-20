@@ -21,6 +21,7 @@ namespace Cama_Energy.Data
         public virtual DbSet<Album> Album { get; set; }
         public virtual DbSet<AlbumImage> AlbumImage { get; set; }
         public virtual DbSet<Certificate> Certificate { get; set; }
+        public virtual DbSet<Contact> Contact { get; set; }
         public virtual DbSet<Downloads> Downloads { get; set; }
         public virtual DbSet<Employe> Employe { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
@@ -80,6 +81,25 @@ namespace Cama_Energy.Data
                     .WithMany(p => p.AlbumImage)
                     .HasForeignKey(d => d.AlbumId)
                     .HasConstraintName("FK_AlbumImage_Album");
+            });
+
+            modelBuilder.Entity<Contact>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Address).HasMaxLength(500);
+
+                entity.Property(e => e.Email).HasMaxLength(150);
+
+                entity.Property(e => e.Phone1).HasMaxLength(50);
+
+                entity.Property(e => e.Phone2).HasMaxLength(50);
+
+                entity.Property(e => e.Telegram).HasMaxLength(50);
+
+                entity.Property(e => e.WhatsApp).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Certificate>(entity =>

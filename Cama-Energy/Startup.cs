@@ -76,6 +76,7 @@ namespace Cama_Energy
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<ISliderService, SliderService>();
             services.AddTransient<IAlbumService, AlbumService>();
+            services.AddTransient<IContactService, ContactService>();
 
             #endregion
 

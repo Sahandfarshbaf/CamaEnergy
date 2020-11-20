@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "تماس با ما";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Admin/FormScripts/Contact.js"></script>
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6"></div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<div class="card card-primary" id="pnlJoziyat">
+    <div class="card-header">
+        <h3 class="card-title">اطلاعات تماس</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="txtPhone1" class="col-sm-2 control-label">تلفن 1:</label>
+                <input type="text" class="form-control" id="txtPhone1" placeholder="پیشگفتار" />
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="txtPhone2" class="control-label">تلفن 2:</label>
+                <input type="text" class="form-control" id="txtPhone2" placeholder="پیشگفتار" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txtWhats" class="control-label">WhatsApp:</label>
+                <input type="text" class="form-control" id="txtWhats" placeholder="پیشگفتار" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txtTele" class="control-label">Telegram:</label>
+                <input type="text" class="form-control" id="txtTele" placeholder="Telegram" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txtEmail" class="control-label">Email:</label>
+                <input type="text" class="form-control" id="txtEmail" placeholder="Email" />
+            </div>
+            <div class="form-group col-md-9">
+                <label for="txtAddress" class="control-label">آدرس:</label>
+                <input type="text" class="form-control" id="txtAddress" placeholder="آدرس" />
+            </div>
+        </div>
+
+        <div class="form-group btn-group-toggle ">
+            <button type="button" id="btnSabt" class="btn btn-success"><i class="fa fa-check"></i>&nbsp; بروزرسانی</button>
+
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
