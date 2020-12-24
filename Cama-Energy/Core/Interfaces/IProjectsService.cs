@@ -27,5 +27,7 @@ namespace Cama_Energy.Core.Interfaces
         string DeleteProjectsImage(long id);
 
         int GetProjectsCount();
+
+        void ActiveDeActive(long id, bool status);
     }
 }

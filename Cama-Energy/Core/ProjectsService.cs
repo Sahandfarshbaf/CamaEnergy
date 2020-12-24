@@ -56,7 +56,7 @@ namespace Cama_Energy.Core
 
         public List<Projects> GetLastProjects()
         {
-            return _context.Projects.Include(c => c.ProjectsImage).OrderByDescending(x=>x.Id).Take(4).ToList();
+            return _context.Projects.Where(c=>c.Selected==true).Include(c => c.ProjectsImage).OrderByDescending(x=>x.Id).Take(4).ToList();
         }
 
         public Projects GetProjectsById(long id)
@@ -79,6 +79,14 @@ namespace Cama_Energy.Core
         {
             return _context.Projects.Where(p => p.ProjectCategory == cid).Include(c => c.ProjectsImage).ToList();
 
+        }
+
+        public void ActiveDeActive(long id,bool status)
+        {
+            var a = _context.Projects.Find(id);
+            a.Selected = status;
+            _context.Entry(a).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

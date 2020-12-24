@@ -30,7 +30,7 @@ namespace Cama_Energy.Areas.Admin.Controllers
         {
 
 
-            return Ok(_projects.GetAllProjects());
+            return Ok(_projects.GetAllProjects().OrderByDescending(c => c.Id));
 
         }
 
@@ -154,5 +154,16 @@ namespace Cama_Energy.Areas.Admin.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Route("api/Projects/ActiveDeActive")]
+        public IActionResult ActiveDeActive(long Id, bool Status)
+        {
+
+            _projects.ActiveDeActive(Id, Status);
+            return Ok("");
+
+        }
+
     }
 }

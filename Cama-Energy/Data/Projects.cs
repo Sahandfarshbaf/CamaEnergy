@@ -12,6 +12,7 @@ namespace Cama_Energy.Data
 
         public long Id { get; set; }
         public string ProjectCategory { get; set; }
+        public bool? Selected { get; set; }
         public string Karfarma { get; set; }
         public string ModirAmel { get; set; }
         public string Brand { get; set; }

@@ -10,6 +10,7 @@ function GetAllProjects() {
                   <tr>
                     <th>ردیف</th>
                     <th>نوع</th>
+                    <th>نمایش در صفحه اصلی</th>
                     <th>عنوان</th>
                     <th>مالک</th>
                     <th>تاریخ</th>
@@ -49,13 +50,18 @@ function GetAllProjects() {
                 } else {
                     desc = item.description;
                 }
-                var azday = new persianDate(item.fromDate).format('YYYY/MM/DD')
-                var taday = new persianDate(item.toDate).format('YYYY/MM/DD')
-          
+                let azday = new persianDate(item.fromDate).format('YYYY/MM/DD')
+                let taday = new persianDate(item.toDate).format('YYYY/MM/DD')
+                let  selected = '';
+                if (item.selected == 1) {
+
+                    selected = 'checked';
+                }
 
                 Html += `<tr>
                             <td>${i + 1}</td>
                             <td>${item.projectCategory}</td>
+                            <td><input type="checkbox" ProjectId="${item.id}" ${selected} class="checkbox custom-checkbox selectedcheck"/></td>
                             <td>${item.title}</td>
                             <td>${item.owner}</td>
                             <td>${azday + " - " + taday}</td>
@@ -464,6 +470,48 @@ function DeleteImage(ImageId) {
     });
 }
 
+function ActiveDeActive(idd,statuss) {
+
+
+    ShowLoader();
+
+    jQuery.ajax({
+        type: "Get",
+        url: "/api/Projects/ActiveDeActive?Id=" + idd + "&Status=" + statuss,
+        data: "",
+        success: function (response) {
+
+            if (statuss==1) {
+                Swal.fire(
+                    'انتخاب شد !',
+                    'پروژه در صفحه اصلی نمایش داده خواهد شد',
+                    'success'
+                ); 
+            } else {
+                Swal.fire(
+                    'انتخاب برداشته شد !',
+                    'پروژه در صفحه اصلی نمایش داده نخواهد شد',
+                    'success'
+                ); 
+            }
+           
+  
+            EndLoader();
+        },
+        error: function (response) {
+
+            console.log(response);
+            EndLoader();
+
+        },
+        complete: function () {
+
+
+
+        }
+    });
+}
+
 
 $(document).ready(() => {
 
@@ -577,6 +625,14 @@ $(document).ready(() => {
             }
         });
 
+
+    });
+    
+    $(document.body).on('click', '.selectedcheck', function () {
+
+        ProjectId = parseInt($(this).attr('ProjectId'));
+        let status = $(this).prop('checked');
+        ActiveDeActive(ProjectId, status);
 
     });
 
